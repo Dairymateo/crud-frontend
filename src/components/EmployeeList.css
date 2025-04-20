@@ -2,12 +2,14 @@
 .employee-list-container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 800px;
-    margin: 20px auto;
+    margin: 90px auto;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 2px solid white;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
   }
   
   .employee-list-heading {
@@ -45,11 +47,11 @@
   }
   
   .employee-table th {
-    background-color: #f8f9fa;
+    background-color: transparent;
     color: #333;
     padding: 12px;
     text-align: left;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid black;
   }
   
   .employee-table td {
@@ -58,7 +60,7 @@
   }
   
   .employee-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: transparent;
   }
   
   .employee-table td:last-child {
@@ -92,7 +94,7 @@
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: transparent;
     margin-top: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -108,8 +110,8 @@
   }
   
   .add-employee-form button {
-    background-color: #007bff;
-    color: white;
+    background-color:transparent;
+    color: transparent;
     padding: 12px 15px;
     border: none;
     border-radius: 5px;

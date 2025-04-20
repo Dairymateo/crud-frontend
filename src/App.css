@@ -2,7 +2,8 @@
 .app-container {
   display: flex;
   min-height: 100vh;
-  background-color: #f4f6f8;
+  
+  
 }
 
 .hamburger-menu {
@@ -19,7 +20,7 @@
 }
 
 .sidebar {
-  background-color: #f8f9fa;
+  background-color: transparent;
   width: 200px;
   height: 100%;
   position: fixed;
@@ -62,15 +63,11 @@
 }
 
 .main-content {
-  margin-left: 0; /* Por defecto, el contenido ocupa todo el ancho */
+  margin-left: 0; 
 }
 
 .app-container.sidebar-open .main-content {
   margin-left: 200px; /* Cuando la barra lateral está abierta, empuja el contenido */
 }
 
-/* Estilos para el botón de hamburguesa cuando el menú está abierto (opcional) */
-.hamburger-menu.open {
-  /* Puedes cambiar el estilo del botón cuando el menú está abierto */
-}
 

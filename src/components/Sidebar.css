@@ -1,9 +1,9 @@
 
 .sidebar-container {
     width: 200px; 
-    background-color: #f8f9fa;
+    background-color: black;
     padding: 20px;
-    border-right: 1px solid #eee;
+    border-right: 1px solid black;
     
   }
   
@@ -26,10 +26,10 @@
   }
   
   .sidebar-nav a:hover {
-    background-color: #e9ecef;
+    background-color: black;
   }
   
   .sidebar-nav a.active {
-    background-color: #007bff;
+    background-color: black;
     color: white;
   }
