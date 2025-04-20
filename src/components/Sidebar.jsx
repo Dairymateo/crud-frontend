@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-//import './Sidebar.css';
+import './Sidebar.css';
 
-function Sidebar({ onNavigate }) {
+function SideBar({ onNavigate }) {
   const [activeItem, setActiveItem] = useState('Projects');
 
   const handleClick = (item) => {
@@ -10,21 +10,21 @@ function Sidebar({ onNavigate }) {
   };
 
   return (
-    <div className="sidebar">
+    <div className="sideBar">
       <div
-        className={`sidebar-item ${activeItem === 'Employees' ? 'active' : ''}`}
+        className={`sideBar-item ${activeItem === 'Employees' ? 'active' : ''}`}
         onClick={() => handleClick('Employees')}
       >
         Employees
       </div>
       <div
-        className={`sidebar-item ${activeItem === 'Projects' ? 'active' : ''}`}
+        className={`sideBar-item ${activeItem === 'Projects' ? 'active' : ''}`}
         onClick={() => handleClick('Projects')}
       >
         Projects
       </div>
       <div
-        className={`sidebar-item ${activeItem === 'Tasks' ? 'active' : ''}`}
+        className={`sideBar-item ${activeItem === 'Tasks' ? 'active' : ''}`}
         onClick={() => handleClick('Tasks')}
       >
         Tasks
@@ -33,4 +33,4 @@ function Sidebar({ onNavigate }) {
   );
 }
 
-export default Sidebar;
+export default SideBar;

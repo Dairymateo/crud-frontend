@@ -1,13 +1,54 @@
+/* index.css */
+
+/* Estilos base para el cuerpo de la página */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna y legible */
+  -webkit-font-smoothing: antialiased; /* Mejora el renderizado de fuentes en navegadores webkit */
+  -moz-osx-font-smoothing: grayscale; /* Mejora el renderizado de fuentes en Firefox para macOS */
+
+  color: #333; /* Color de texto principal oscuro para buen contraste */
+  line-height: 1.6; 
+  
 }
 
+/* Estilos para encabezados */
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50; /* Color de encabezado más fuerte */
+  font-weight: 700; /* Hace los encabezados más prominentes */
+  margin-bottom: 1em; /* Espacio debajo de los encabezados */
+  line-height: 1.2; /* Reduce un poco el espaciado para los encabezados */
+}
+
+/* Estilos para párrafos */
+p {
+  margin-bottom: 1.5em; /* Espacio entre párrafos */
+}
+
+/* Estilos para enlaces */
+a {
+  color: #007bff; /* Color azul distintivo para enlaces */
+  text-decoration: none; /* Elimina el subrayado predeterminado */
+  transition: color 0.3s ease; /* Transición suave para el cambio de color al pasar el ratón */
+}
+
+a:hover {
+  color: #0056b3; /* Color más oscuro al pasar el ratón */
+  text-decoration: underline; /* Añade subrayado al pasar el ratón para indicar interactividad */
+}
+
+/* Estilos para el código */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Consolas', 'Monaco', monospace; /* Fuente monoespaciada para código */
+  background-color: #e7e7e7; /* Fondo gris claro para bloques de código */
+  color: #333;
+  padding: 0.2em 0.4em; /* Espaciado interno */
+  border-radius: 3px; /* Bordes ligeramente redondeados */
+}
+
+/* Estilos para contenedores (si los utilizas) */
+.container {
+  max-width: 1200px; /* Ancho máximo para el contenido principal */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 20px; /* Espacio interno alrededor del contenedor */
 }

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import './EmployeeList.css'; // Importa el archivo CSS
 
 function EmployeeList() {
   const [employees, setEmployees] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [employeeToEdit, setEmployeeToEdit] = useState(null);
   const apiUrl = 'http://localhost:3000/employees';
-  // *** ASUMIENDO QUE LA API DEVUELVE '_id' COMO IDENTIFICADOR ***
-  const idPropertyName = '_id'; // <--- AJUSTA ESTO SI TU API USA OTRO NOMBRE
+  const idPropertyName = '_id';
 
   useEffect(() => {
     fetch(apiUrl)
@@ -46,9 +46,8 @@ function EmployeeList() {
 
   const handleUpdateEmployee = async (updatedEmployee) => {
     try {
-      // Construye la URL usando 'id' como espera tu backend
       const response = await fetch(`${apiUrl}/${updatedEmployee[idPropertyName]}`, {
-        method: 'PATCH', 
+        method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedEmployee),
       });
@@ -80,15 +79,24 @@ function EmployeeList() {
   };
 
   return (
-    <div>
-      <h2>Employees</h2>
-      <p>A list of all the employees.</p>
-      <button onClick={() => setShowAddForm(true)}>Add Employee</button>
+    <div className="employee-list-container">
+      <h2 className="employee-list-heading">Employees</h2>
+      <p className="employee-list-description">A list of all the employees.</p>
+      <button className="add-employee-button" onClick={() => setShowAddForm(true)}>
+        Add Employee
+      </button>
 
-      {showAddForm && <AddEmployeeForm onEmployeeAdded={handleAddEmployee} employeeToEdit={employeeToEdit} onEmployeeUpdated={handleUpdateEmployee} idPropertyName={idPropertyName} />}
+      {showAddForm && (
+        <AddEmployeeForm
+          onEmployeeAdded={handleAddEmployee}
+          employeeToEdit={employeeToEdit}
+          onEmployeeUpdated={handleUpdateEmployee}
+          idPropertyName={idPropertyName}
+        />
+      )}
 
-      <table>
-        <thead>
+      <table className="employee-table">
+        <thead className="employee-table-head">
           <tr>
             <th>ID</th>
             <th>Name</th>
@@ -96,15 +104,19 @@ function EmployeeList() {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="employee-table-body">
           {employees.map(employee => (
-            <tr key={employee[idPropertyName]}>
+            <tr key={employee[idPropertyName]} className="employee-row">
               <td>{employee[idPropertyName]}</td>
               <td>{employee.name}</td>
               <td>{employee.email}</td>
-              <td>
-                <button onClick={() => handleEditEmployee(employee)}>Edit</button>
-                <button onClick={() => handleDeleteEmployee(employee[idPropertyName])}>Delete</button>
+              <td className="employee-actions">
+                <button className="edit-button" onClick={() => handleEditEmployee(employee)}>
+                  Edit
+                </button>
+                <button className="delete-button" onClick={() => handleDeleteEmployee(employee[idPropertyName])}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
@@ -151,13 +163,42 @@ function AddEmployeeForm({ onEmployeeAdded, employeeToEdit, onEmployeeUpdated, i
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
-      <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
-      <input placeholder="Phone" value={phone} onChange={e => setPhone(e.target.value)} />
-      <input placeholder="Salary" value={salary} onChange={e => setSalary(e.target.value)} type="number" />
-      <input placeholder="Department" value={department} onChange={e => setDepartment(e.target.value)} />
-      <button type="submit">{id ? 'Update Employee' : 'Add Employee'}</button>
+    <form onSubmit={handleSubmit} className="add-employee-form">
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={e => setName(e.target.value)}
+        required
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Phone"
+        value={phone}
+        onChange={e => setPhone(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="Salary"
+        value={salary}
+        onChange={e => setSalary(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Department"
+        value={department}
+        onChange={e => setDepartment(e.target.value)}
+      />
+      <button type="submit" className="submit-button">
+        {id ? 'Update Employee' : 'Add Employee'}
+      </button>
     </form>
   );
 }

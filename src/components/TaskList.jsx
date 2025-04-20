@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './TaskList.css'; // Importa el archivo CSS
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
@@ -114,9 +115,11 @@ function TaskList() {
   };
 
   return (
-    <div>
-      <h2>Lista de Tareas</h2>
-      <button onClick={() => setShowAddForm(true)}>Agregar Tarea</button>
+    <div className="task-list-container">
+      <h2 className="task-list-heading">Lista de Tareas</h2>
+      <button className="add-task-button" onClick={() => setShowAddForm(true)}>
+        Agregar Tarea
+      </button>
 
       {showAddForm && (
         <AddTaskForm
@@ -129,8 +132,8 @@ function TaskList() {
         />
       )}
 
-      <table>
-        <thead>
+      <table className="task-table">
+        <thead className="task-table-head">
           <tr>
             <th>ID</th>
             <th>Nombre</th>
@@ -142,19 +145,27 @@ function TaskList() {
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="task-table-body">
           {tasks.map(task => (
-            <tr key={task[idPropertyName]}>
+            <tr key={task[idPropertyName]} className="task-row">
               <td>{task[idPropertyName]}</td>
               <td>{task.name}</td>
               <td>{task.description}</td>
-              <td>{task.status}</td>
-              <td>{employees.find(emp => emp[idPropertyName] === task.employeeId)?.name || 'N/A'}</td>
-              <td>{projects.find(proj => proj[idPropertyName] === task.proyectId)?.name || 'N/A'}</td>
-              <td>{new Date(task.date).toLocaleDateString()}</td>
+              <td className="task-status">{task.status}</td>
               <td>
-                <button onClick={() => handleEditTask(task)}>Editar</button>
-                <button onClick={() => handleDeleteTask(task[idPropertyName])}>Eliminar</button>
+                {employees.find(emp => emp[idPropertyName] === task.employeeId)?.name || 'N/A'}
+              </td>
+              <td>
+                {projects.find(proj => proj[idPropertyName] === task.proyectId)?.name || 'N/A'}
+              </td>
+              <td>{new Date(task.date).toLocaleDateString()}</td>
+              <td className="task-actions">
+                <button className="edit-button" onClick={() => handleEditTask(task)}>
+                  Editar
+                </button>
+                <button className="delete-button" onClick={() => handleDeleteTask(task[idPropertyName])}>
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}
@@ -197,7 +208,7 @@ function AddTaskForm({ onTaskAdded, taskToEdit, onTaskUpdated, idPropertyName, e
       status,
       employeeId,
       proyectId,
-      date: dateStr, // Enviamos la cadena directamente en formato YYYY-MM-DD
+      date: dateStr, // Enviamos la cadena directamente en formato AAAA-MM-DD
     };
     if (id) {
       onTaskUpdated({ [idPropertyName]: id, ...taskData });
@@ -207,31 +218,66 @@ function AddTaskForm({ onTaskAdded, taskToEdit, onTaskUpdated, idPropertyName, e
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input placeholder="Nombre" value={name} onChange={e => setName(e.target.value)} required />
-      <textarea placeholder="Descripción" value={description} onChange={e => setDescription(e.target.value)} />
-      <select value={status} onChange={e => setStatus(e.target.value)}>
+    <form onSubmit={handleSubmit} className="add-task-form">
+      <input
+        type="text"
+        placeholder="Nombre"
+        value={name}
+        onChange={e => setName(e.target.value)}
+        required
+      />
+      <textarea
+        placeholder="Descripción"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        className="task-description-input"
+      />
+      <select value={status} onChange={e => setStatus(e.target.value)} className="task-status-select">
         {statusOptions.map(option => (
-          <option key={option} value={option}>{option}</option>
+          <option key={option} value={option}>
+            {option}
+          </option>
         ))}
       </select>
-      <select value={employeeId} onChange={e => setEmployeeId(e.target.value)} required>
+      <select
+        value={employeeId}
+        onChange={e => setEmployeeId(e.target.value)}
+        required
+        className="employee-select"
+      >
         <option value="">Seleccionar Empleado</option>
         {employees.map(employee => (
-          <option key={employee[idPropertyName]} value={employee[idPropertyName]}>{employee.name}</option>
+          <option key={employee[idPropertyName]} value={employee[idPropertyName]}>
+            {employee.name}
+          </option>
         ))}
       </select>
-      <select value={proyectId} onChange={e => setProyectId(e.target.value)} required>
+      <select
+        value={proyectId}
+        onChange={e => setProyectId(e.target.value)}
+        required
+        className="project-select"
+      >
         <option value="">Seleccionar Proyecto</option>
         {projects.map(project => (
-          <option key={project[idPropertyName]} value={project[idPropertyName]}>{project.name}</option>
+          <option key={project[idPropertyName]} value={project[idPropertyName]}>
+            {project.name}
+          </option>
         ))}
       </select>
-      <div>
+      <div className="date-input-group">
         <label htmlFor="date">Fecha:</label>
-        <input type="date" id="date" value={dateStr} onChange={e => setDateStr(e.target.value)} required />
+        <input
+          type="date"
+          id="date"
+          value={dateStr}
+          onChange={e => setDateStr(e.target.value)}
+          required
+        />
       </div>
-      <button type="submit">{id ? 'Actualizar Tarea' : 'Agregar Tarea'}</button>
+      <button type="submit" className="submit-button">
+        {id ? 'Actualizar Tarea' : 'Agregar Tarea'}
+      </button>
     </form>
   );
 }

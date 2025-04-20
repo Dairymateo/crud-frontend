@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './ProyectList.css';
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
@@ -33,7 +34,7 @@ function ProjectList() {
         console.error('Error al crear proyecto:', response.status);
       }
     } catch (error) {
-        console.error('Error:', error);
+      console.error('Error:', error);
     }
   };
 
@@ -77,29 +78,43 @@ function ProjectList() {
   };
 
   return (
-    <div>
-      <h2>Projects</h2>
-      <p>A list of all the projects in your database including their ID and name.</p>
-      <button onClick={() => setShowAddForm(true)}>Add project</button>
+    <div className="project-list-container">
+      <h2 className="project-list-heading">Projects</h2>
+      <p className="project-list-description">
+        Lista de Proyectos
+      </p>
+      <button className="add-project-button" onClick={() => setShowAddForm(true)}>
+        Add project
+      </button>
 
-      {showAddForm && <AddProjectForm onProjectAdded={handleAddProject} projectToEdit={projectToEdit} onProjectUpdated={handleUpdateProject} />}
+      {showAddForm && (
+        <AddProjectForm
+          onProjectAdded={handleAddProject}
+          projectToEdit={projectToEdit}
+          onProjectUpdated={handleUpdateProject}
+        />
+      )}
 
-      <table>
-        <thead>
+      <table className="project-table">
+        <thead className="project-table-head">
           <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="project-table-body">
           {projects.map(project => (
-            <tr key={project._id}>
+            <tr key={project._id} className="project-row">
               <td>{project._id}</td>
               <td>{project.name}</td>
-              <td>
-                <button onClick={() => handleEditProject(project)}>Edit</button>
-                <button onClick={() => handleDeleteProject(project._id)}>Delete</button>
+              <td className="project-actions">
+                <button className="edit-button" onClick={() => handleEditProject(project)}>
+                  Edit
+                </button>
+                <button className="delete-button" onClick={() => handleDeleteProject(project._id)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
@@ -143,12 +158,35 @@ function AddProjectForm({ onProjectAdded, projectToEdit, onProjectUpdated }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
-      <textarea placeholder="Description" value={description} onChange={e => setDescription(e.target.value)} />
-      <input placeholder="Status" value={status} onChange={e => setStatus(e.target.value)} />
-      <input type="number" placeholder="Budget" value={budget} onChange={e => setBudget(parseInt(e.target.value))} />
-      <button type="submit">{_id ? 'Update Project' : 'Add Project'}</button>
+    <form onSubmit={handleSubmit} className="add-project-form">
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={e => setName(e.target.value)}
+        required
+      />
+      <textarea
+        placeholder="Description"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        className="project-description-input"
+      />
+      <input
+        type="text"
+        placeholder="Status"
+        value={status}
+        onChange={e => setStatus(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="Budget"
+        value={budget}
+        onChange={e => setBudget(parseInt(e.target.value))}
+      />
+      <button type="submit" className="submit-button">
+        {_id ? 'Update Project' : 'Add Project'}
+      </button>
     </form>
   );
 }
