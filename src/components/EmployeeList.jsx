@@ -5,7 +5,7 @@ function EmployeeList() {
   const [employees, setEmployees] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [employeeToEdit, setEmployeeToEdit] = useState(null);
-  const apiUrl = 'http://localhost:3000/employees';
+  const apiUrl = 'https://crud-employees.onrender.com/employees';
   const idPropertyName = '_id';
 
   useEffect(() => {

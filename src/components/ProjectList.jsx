@@ -5,7 +5,7 @@ function ProjectList() {
   const [projects, setProjects] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [projectToEdit, setProjectToEdit] = useState(null);
-  const apiUrl = 'http://localhost:3000/proyects';
+  const apiUrl = 'https://crud-employees.onrender.com/proyects';
 
   useEffect(() => {
     fetch(apiUrl)

@@ -7,9 +7,9 @@ function TaskList() {
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [employees, setEmployees] = useState([]);
   const [projects, setProjects] = useState([]);
-  const apiUrl = 'http://localhost:3000/task';
-  const employeesApiUrl = 'http://localhost:3000/employees';
-  const projectsApiUrl = 'http://localhost:3000/proyects';
+  const apiUrl = 'https://crud-employees.onrender.com/task';
+  const employeesApiUrl = 'https://crud-employees.onrender.com/employees';
+  const projectsApiUrl = 'https://crud-employees.onrender.com/proyects';
   const idPropertyName = '_id';
 
   useEffect(() => {
