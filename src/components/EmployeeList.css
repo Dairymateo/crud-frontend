@@ -60,7 +60,7 @@
   }
   
   .employee-table tr:nth-child(even) {
-    background-color: transparent;
+    background-color: white;
   }
   
   .employee-table td:last-child {
@@ -94,7 +94,7 @@
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: transparent;
+    background-color: white;
     margin-top: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -110,7 +110,7 @@
   }
   
   .add-employee-form button {
-    background-color:transparent;
+    background-color:white;
     color: transparent;
     padding: 12px 15px;
     border: none;
