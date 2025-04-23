@@ -6,7 +6,7 @@
     padding: 20px;
     border: 2px solid white;
     border-radius: 8px;
-    background-color: transparent;
+    background-color: white;
     backdrop-filter: blur(5px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     
@@ -111,7 +111,7 @@
   
   .add-employee-form button {
     background-color:white;
-    color: transparent;
+    color: white;
     padding: 12px 15px;
     border: none;
     border-radius: 5px;
